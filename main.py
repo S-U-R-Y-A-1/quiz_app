@@ -6,17 +6,17 @@ from groq import Groq
 client = Groq(api_key="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")
 # Define quiz questions in a dictionary
 questions = [
-    {"question": "To unlock this, use the four letters below and create a seven-letter word: 'UMNI'.", "answer": "MINIMUM"},
-    {"question": "Construct an anagram statement (anagram : contains all alphabet letters)", "answer": ""},
-    {"question": "To unlock this, solve the equation where each letter represents a unique digit (0-9): B + A + N + K = 10\nM + O + N + E + Y = 15\nFind the correct digits for BANKMONEY to unlock.", "answer": ""},
-    {"question": "A robber left a clue: HFXM NX KZQQ GQTTI\nDecipher the shift cipher where the shift is determined by the fifth preceding letter.", "answer": "CASH IS FULL OF BLOOD"},
-    {"question": "A six-digit balance has a digit sum of 36. The first and last digits are the same, the middle two are identical, and the second and fifth digits are twice the middle. The sum of the second and third is equal to the first. Find the number.", "answer": "936639"},
-    {"question": "The passcode is a 5-character alphanumeric sequence. The first two are the initials of a famous cricketer with a biopic. The last three digits have a sum of 5, with the first and last being consecutive.", "answer": "MS203"},
-    {"question": "Convert the three-digit number from the previous question into binary.", "answer": "11001011"},
-    {"question": "Convert 'MAGADHA BANK' to ASCII values. (Note: Consider capital letter values and neglect the space)", "answer": "77 65 71 65 68 72 65 66 65 78 75"},
-    {"question": "Unlock the locker by removing the screws based on directional hints: ↓→↑↑←↓←↑→↑←↓↓←↑←. Organize them into four batches.", "answer": "1 up down right left, 2 left left right down"},
-    {"question": "Find the cube's side length given a volume of 1728 cubic meters.", "answer": "12"},
-    {"question": "Use the bubble sort algorithm to sort: 5 4 2 3 1. Enter the number of swaps needed.", "answer": "7"}
+    {"question": "To unlock this, use the four letters below and create a seven-letter word: 'UMNI'. \nWin Amount : $1000", "answer": "MINIMUM"},
+    {"question": "A robber left a clue: HFXM NX KZQQ GQTTI\nDecipher the shift cipher where the shift is determined by the fifth preceding letter.\nWin Amount : $1000", "answer": "CASH IS FULL OF BLOOD"},
+    {"question": "Convert 'MAGADHA BANK' to ASCII values. (Note: Consider capital letter values and neglect the space)\nWin Amount : $1200", "answer": "77 65 71 65 68 72 65 66 65 78 75"},
+    {"question": "Find the cube's side length given a volume of 1728 cubic meters.\nWin Amount : $2300", "answer": "12"},
+    {"question": "The passcode is a 5-character alphanumeric sequence. The first two are the initials of a famous cricketer with a biopic. The last three digits have a sum of 5, with the first and last being consecutive.\nWin Amount : $2500", "answer": "MS203"},
+    {"question": "Convert the three-digit number from the previous question into binary.\nWin Amount : $2800", "answer": "11001011"},
+    {"question": "Construct an anagram statement (anagram : contains all alphabet letters) \nWin Amount : $3000", "answer": ""},
+    {"question": "Use the bubble sort algorithm to sort: 5 4 2 3 1. Enter the number of swaps needed. \nWin Amount : $3200", "answer": "7"},
+    {"question": "To unlock this, solve the equation where each letter represents a unique digit (0-9): B + A + N + K = 10\nM + O + N + E + Y = 15\nFind the correct digits for BANKMONEY to unlock.\nWin Amount : $3500", "answer": ""},
+    {"question": "Unlock the locker by removing the screws based on directional hints: ↓→↑↑←↓←↑→↑←↓↓←↑←. Organize them into four batches.\nWin Amount : $4500", "answer": "1 up down right left, 2 left left right down"},
+    {"question": "A six-digit balance has a digit sum of 36. The first and last digits are the same, the middle two are identical, and the second and fifth digits are twice the middle. The sum of the second and third is equal to the first. Find the number.\nWin Amount : $5000", "answer": "936639"},
 ]
 
 # Initialize session state variables
@@ -34,7 +34,7 @@ if "remaining_time" not in st.session_state:
     st.session_state.remaining_time = 10  # Set initial timer
 
 # Time limit per question
-time_limit = 10  # seconds
+time_limit = 20  # seconds
 
 # Function to validate answers using Groq API
 def validate_answer(index, user_answer):
