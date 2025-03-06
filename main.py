@@ -222,7 +222,7 @@ else:
         st.session_state.remaining_time = 10  # Set initial timer
 
 # Time limit per question
-    time_limit = 2  # seconds
+    time_limit = 180  # seconds
 
 # Function to validate answers using Groq API
     def validate_answer(index, user_answer):
