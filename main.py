@@ -10,7 +10,7 @@ def get_gif_base64(file_path):
     return base64.b64encode(data).decode()
 
 # Load and encode the GIF
-gif_path = "quiz_app/anode-avaxnode.gif"  # Your local GIF path
+gif_path = "https://raw.githubusercontent.com/S-U-R-Y-A-1/quiz_app/main/anode-avaxnode.gif"  # Your local GIF path
 gif_base64 = get_gif_base64(gif_path)
 
 # Use session state to track first load
