@@ -200,7 +200,7 @@ else:
 
 
 # Initialize Groq client
-    client = Groq(api_key="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")
+    client = Groq(api_key="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")
 # Define quiz questions in a dictionary
     questions = [
     {"question": "To unlock this, use the four letters below and create a seven-letter word: 'UMNI'. \n\nWin Amount : $1000", "answer": [77, 73, 78, 73, 77, 85, 77],"amount":1000},
