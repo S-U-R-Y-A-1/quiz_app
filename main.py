@@ -76,7 +76,7 @@ else:
     st.set_page_config(page_title="Quiz Game", page_icon="🎯", layout="wide")
 
 # ✅ Load the uploaded image
-    image_path = "quiz_app/background.jpg"  # Use the correct path of your uploaded image
+    image_path = "https://raw.githubusercontent.com/S-U-R-Y-A-1/quiz_app/main/background.jpg"  # Use the correct path of your uploaded image
 
 # ✅ Convert image to Base64
     def get_base64(image_path):
@@ -243,7 +243,7 @@ else:
             return "Correct"
 
     # Otherwise, send to Groq API for validation
-        validation_prompt = f"""
+        validation_prompt = """
         Given the question: "{questions[index]['question']}"
         The correct answer is: "{correct_answer}"
         The user answered: "{user_answer}"
