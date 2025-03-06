@@ -3,24 +3,27 @@ import time
 from groq import Groq
 import base64
 
-# Function to encode local file into base64
-def get_gif_base64(file_path):
-    with open(file_path, "rb") as file:
-        data = file.read()
-    return base64.b64encode(data).decode()
+import requests
 
-# Load and encode the GIF
-gif_path = "https://raw.githubusercontent.com/S-U-R-Y-A-1/quiz_app/main/anode-avaxnode.gif"  # Your local GIF path
-gif_base64 = get_gif_base64(gif_path)
+def get_gif_base64(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        return base64.b64encode(response.content).decode()
+    else:
+        st.error("Failed to load GIF from GitHub.")
+        return None
+
+# GitHub raw URL of the GIF
+gif_url = "https://raw.githubusercontent.com/S-U-R-Y-A-1/quiz_app/main/anode-avaxnode.gif"
+gif_base64 = get_gif_base64(gif_url)
 
 # Use session state to track first load
 if "show_gif" not in st.session_state:
     st.session_state.show_gif = True  # Show GIF initially
     st.session_state.start_time = time.time()  # Store the start time
 
-# Check if 3 seconds have passed
-if st.session_state.show_gif and (time.time() - st.session_state.start_time < 7):
-    # Show GIF background
+# Display GIF only if it was successfully loaded
+if gif_base64 and st.session_state.show_gif and (time.time() - st.session_state.start_time < 7):
     st.markdown(
         f"""
         <style>
@@ -38,17 +41,17 @@ if st.session_state.show_gif and (time.time() - st.session_state.start_time < 7)
 
         .title-box {{
             position: absolute;
-            width:600px;
+            width: 600px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: #FFFFFF; /* Solid white background */
-            color:black;
+            color: black;
             padding: 30px 50px;
             border-radius: 20px;
             text-align: center;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            margin-top:200px;
+            margin-top: 200px;
             border: 2px solid black;
             opacity: 0;  /* Initially hidden */
             animation: fadeIn 1s ease-in-out forwards;
@@ -61,7 +64,7 @@ if st.session_state.show_gif and (time.time() - st.session_state.start_time < 7)
             <p>Let the AI Heist Begin!</p>
         </div>
         """,
-        unsafe_allow_html=True  # Ensure HTML is rendered correctly
+        unsafe_allow_html=True
     )
 
     # Wait for 7 seconds
@@ -71,19 +74,25 @@ if st.session_state.show_gif and (time.time() - st.session_state.start_time < 7)
     st.session_state.show_gif = False
     st.rerun()
 
+
 else:
 # Set page config
     st.set_page_config(page_title="Quiz Game", page_icon="🎯", layout="wide")
 
 # ✅ Load the uploaded image
-    image_path = "https://raw.githubusercontent.com/S-U-R-Y-A-1/quiz_app/main/background.jpg"  # Use the correct path of your uploaded image
+    image_url = "https://raw.githubusercontent.com/S-U-R-Y-A-1/quiz_app/main/background.jpg"
+
+# ✅ Function to fetch image from URL and convert to Base64
+    def get_base64_from_url(image_url):
+        response = requests.get(image_url)
+        if response.status_code == 200:
+            return base64.b64encode(response.content).decode()
+        else:
+            st.error("Failed to load background image from GitHub.")
+            return None
 
 # ✅ Convert image to Base64
-    def get_base64(image_path):
-        with open(image_path, "rb") as image_file:
-            return base64.b64encode(image_file.read()).decode()
-
-    image_base64 = get_base64(image_path)
+    image_base64 = get_base64_from_url(image_url)
 
 # ✅ Custom CSS for Full-Page Background    
     background_css = f"""
