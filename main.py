@@ -40,23 +40,29 @@ if gif_base64 and st.session_state.show_gif and (time.time() - st.session_state.
         }}
 
         .title-box {{
-            position: absolute;
-            width: 600px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #FFFFFF; /* Solid white background */
-            color: black;
-            padding: 30px 50px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            margin-top: 200px;
-            border: 2px solid black;
-            opacity: 0;  /* Initially hidden */
-            animation: fadeIn 1s ease-in-out forwards;
-            animation-delay: 4s;  /* Delay title appearance by 3 seconds */
-        }}
+    position: absolute;
+    width: 600px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF; /* Solid white background */
+    color: black;
+    padding: 30px 50px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    margin-top: 200px;
+    border: 2px solid black;
+    opacity: 0;  /* Initially hidden */
+    animation: fadeIn 1s ease-in-out forwards;
+    animation-delay: 4s;  /* Delay title appearance by 4 seconds */
+}}
+
+.title-box h1, .title-box p {{
+    color: gold;
+    text-shadow: 0 0 10px gold, 0 0 20px #FFD700, 0 0 30px #FFA500, 0 0 40px #FF8C00;
+}}
+
         </style>
 
         <div class="title-box">
